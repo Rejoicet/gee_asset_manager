@@ -41,6 +41,7 @@ def get_google_session(url: str, account_name: str, password: str, browser: str,
     :return: session object
     """
     options = Options()
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
     if headless:
         options.add_argument('--headless')
 
