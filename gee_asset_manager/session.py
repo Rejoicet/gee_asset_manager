@@ -40,13 +40,17 @@ def get_google_session(url: str, account_name: str, password: str, browser: str,
     :param headless: run as headless
     :return: session object
     """
-    options = Options()
-    options.add_experimental_option("excludeSwitches", ['load-extension', 'enable-automation'])
+    #options = Options()
+    #options.add_experimental_option("excludeSwitches", ['load-extension', 'enable-automation'])
+    
+    chrome_options = webdriver.ChromeOptions();
+    chrome_options.add_experimental_option("excludeSwitches", ['load-extension', 'enable-automation'])
+    
     if headless:
-        options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
 
     if browser == 'Chrome':
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(chrome_options=chrome_options)
     else:
         raise NotImplemented('{} browser is not implemented.'.format(browser))
 
